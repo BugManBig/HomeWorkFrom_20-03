@@ -2,6 +2,7 @@ package com.company;
 
 public class Main {
     public static void main(String[] args) {
-        new Application(args, "D:\\AMyasnikov\\GitHub\\1.txt");
+        Application app = new Application(args, "D:\\AMyasnikov\\GitHub\\7.txt");
+        System.out.println(app.integerValue("b"));
     }
 }
