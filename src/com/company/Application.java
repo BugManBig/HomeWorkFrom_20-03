@@ -17,10 +17,7 @@ public class Application implements PropertyHelper {
     public String stringValue(String name) {
         for (int i = 0; i < args.length; i++) {
             String arg = args[i];
-            int equalsPos = 0;
-            while (arg.charAt(equalsPos) != '=') {
-                equalsPos++;
-            }
+            int equalsPos = arg.indexOf('=');
             if (Objects.equals(arg.substring(0, equalsPos), name)) {
                 return arg.substring(equalsPos + 1);
             }
