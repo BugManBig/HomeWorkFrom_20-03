@@ -23,21 +23,14 @@ public class Application implements PropertyHelper {
             }
         }
 
-        Properties p = System.getProperties();
-        Enumeration keys = p.keys();
-        while (keys.hasMoreElements()) {
-            String key = (String) (keys.nextElement());
-            String value = (String) (p.get(key));
-            if (Objects.equals(key, name)) {
-                return value;
-            }
+        String prop = System.getProperty(name);
+        if (prop != null) {
+            return prop;
         }
 
-        Map<String, String> env = System.getenv();
-        for (String envName : env.keySet()) {
-            if (Objects.equals(envName, name)) {
-                return env.get(envName);
-            }
+        String env = System.getenv().get(name);
+        if (env != null) {
+            return env;
         }
 
         return getArgumentValueFromFile(name);
